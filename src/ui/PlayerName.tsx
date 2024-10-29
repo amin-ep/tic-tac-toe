@@ -9,7 +9,7 @@ const StyledDiv = styled.div`
   gap: 0.95rem;
   border-right: 1px solid var(--color-gray);
   height: max-content;
-  width: 150px;
+  width: 100%;
   border-radius: 6px;
   padding: 1rem;
   box-shadow: ${(props) => (props.turn === true ? "var(--shadow-1)" : "0 0 0")};
@@ -26,8 +26,6 @@ const StyledDiv = styled.div`
       : props.color === "yellow"
       ? `var(--color-gold-100)`
       : ""};
-
-  transform: ${(props) => (props.turn === false ? "translate(0, 10px)" : "")};
 
   transition: 0.5s all;
 `;

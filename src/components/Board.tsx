@@ -5,6 +5,7 @@ import { ReduxStore, GameDispatch } from "../store/store";
 import Square from "./Square";
 import { calculateWinner } from "../utils/helpers";
 import { drawGame, addToPlayerWins } from "../store/gameSlice";
+import ScoreBoard from "./ScoreBoard";
 
 const StyledDiv = styled.div`
   display: grid;
@@ -13,7 +14,7 @@ const StyledDiv = styled.div`
   justify-content: center;
   align-items: center;
   grid-gap: 1rem;
-  margin-top: 1rem;
+  margin: 1.5rem 0;
 `;
 
 const Board = () => {
@@ -49,6 +50,8 @@ const Board = () => {
       {lines.map((item, index) => (
         <Square key={item.index.toString()} item={item} index={index} />
       ))}
+
+      {status === "started" && <ScoreBoard />}
     </StyledDiv>
   );
 };

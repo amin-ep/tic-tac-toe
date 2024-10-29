@@ -1,6 +1,7 @@
 import Board from "./components/Board";
 import Header from "./components/Header";
 import Toast from "./components/Toast";
+import NewGameButton from "./components/NewGameButton";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Toast />
       <Header />
       <Board />
+      <NewGameButton />
     </>
   );
 }
