@@ -2,89 +2,63 @@ import styled from "styled-components";
 import ICross from "../models/circle-cross.model";
 
 const Span = styled.span`
-  background-color: var(--color-sky);
+  background-color: var(--color-cyan-300);
   border-radius: 4px;
   position: absolute;
+  width: 14px;
+  height: 100%;
+  transition: 0.6s;
+  animation: toDown 600ms;
 
-  &.line-small {
-    animation: line-small 0.6s;
-  }
-
-  &.line-medium {
-    animation: line-medium 0.6s;
-  }
-
-  &.line-large {
-    animation: line-large 0.6s;
-  }
-
-  @keyframes line-small {
+  @keyframes toDown {
     from {
       height: 0;
     }
-
     to {
-      height: 64px;
+      height: 100%;
     }
   }
 
-  @keyframes line-medium {
-    from {
-      height: 0;
-    }
-
-    to {
-      height: 96px;
-    }
+  @media (min-width: 425px) {
+    width: 17px;
   }
 
-  @keyframes line-large {
-    from {
-      height: 0;
-    }
+  @media (min-width: 640px) {
+    width: 18px;
+  }
 
-    to {
-      height: 128px;
-    }
+  @media (min-width: 768px) {
+    width: 26px;
   }
 `;
 
-interface ISizes {
-  small: string;
-  medium: string;
-  large: string;
-}
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  aspect-ratio: 1/1;
+  position: relative;
 
-const Cross: React.FC<ICross> = ({ size = "small" }) => {
-  const spanSizes: ISizes = {
-    small: "w-3 h-16",
-    medium: "w-5 h-24",
-    large: "w-7 h-32",
-  };
+  @media (min-width: 425px) {
+    width: 4.5rem;
+  }
 
-  const containerSize = {
-    small: "w-14 h-14",
-    medium: "w-20 h-20",
-    large: "w-28 h-28",
-  };
+  @media (min-width: 640px) {
+    width: 5rem;
+  }
 
+  @media (min-width: 768px) {
+    width: 7.5rem;
+  }
+`;
+
+const Cross: React.FC<ICross> = () => {
   return (
-    <div
-      className={`flex items-center justify-center relative ${
-        containerSize[size as keyof typeof containerSize]
-      } p-0`}
-    >
-      <Span
-        className={`rotate-45 ${spanSizes[size as keyof typeof spanSizes]} ${[
-          `line-${size}`,
-        ]}`}
-      ></Span>
-      <Span
-        className={`-rotate-45 ${spanSizes[size as keyof typeof spanSizes]} ${[
-          `line-${size}`,
-        ]}`}
-      ></Span>
-    </div>
+    <Container>
+      <Span className="rotate-45 bg-gradient-to-t from-blue-500 to-cyan-300"></Span>
+      <Span className="-rotate-45 bg-gradient-to-r from-blue-400 to-cyan-300"></Span>
+    </Container>
   );
 };
 

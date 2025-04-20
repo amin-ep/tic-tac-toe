@@ -8,38 +8,58 @@ import { useDispatch } from "react-redux";
 import { fillLine, ILine } from "../store/gameSlice";
 import toast from "react-hot-toast";
 
-const Button = styled.button`
-  width: 12rem;
-  height: 11rem;
+const Button = styled.button<{ index: number }>`
+  width: 100%;
+  aspect-ratio: 1/1;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-navy-800);
-  border-radius: 8px;
-  box-shadow: var(--shadow-1) #0e1f29;
+  background: var(--color-white);
+
+  border-color: var(--color-gray-100);
+  border-radius: ${(props) =>
+    props.index === 0
+      ? "8px 0 0 0"
+      : props.index === 1 ||
+        props.index === 4 ||
+        props.index === 7 ||
+        props.index === 5 ||
+        props.index === 3
+      ? "0"
+      : props.index === 2
+      ? "0 8px 0 0"
+      : props.index === 6
+      ? "0 0 0 8px"
+      : props.index === 8
+      ? "0 0 8px 0"
+      : ""};
+
+  border-style: ${(props) =>
+    props.index === 0
+      ? "none solid solid none"
+      : props.index === 1
+      ? "none none solid none"
+      : props.index === 2
+      ? "none none solid solid"
+      : props.index === 3
+      ? "none solid solid none"
+      : props.index === 4
+      ? "none none solid none"
+      : props.index === 5
+      ? "none none solid solid"
+      : props.index === 6
+      ? "none solid none none"
+      : props.index === 7
+      ? "none none none none"
+      : props.index === 8
+      ? "none none none solid"
+      : ""};
+
+  border-width: 2px;
+  border-color: var(--color-gray-200);
 
   &:disabled {
     cursor: not-allowed;
-  }
-
-  @media (max-width: 730px) {
-    width: 10rem;
-    height: 9rem;
-  }
-
-  @media (max-width: 548px) {
-    width: 8rem;
-    height: 7rem;
-  }
-
-  @media (max-width: 438px) {
-    width: 6rem;
-    height: 5rem;
-  }
-
-  @media (max-width: 330px) {
-    width: 5.2rem;
-    height: 4.2rem;
   }
 `;
 
@@ -55,7 +75,7 @@ function Square({ index, item }: { index: number; item: ILine }) {
         setValue(<Cross size="small" />);
         break;
       case "yellow":
-        setValue(<Circle size="small" />);
+        setValue(<Circle />);
 
         break;
       default:
@@ -80,6 +100,7 @@ function Square({ index, item }: { index: number; item: ILine }) {
     <Button
       disabled={status === "ended" || value !== null}
       onClick={handleClickSquare}
+      index={index}
     >
       {value}
     </Button>

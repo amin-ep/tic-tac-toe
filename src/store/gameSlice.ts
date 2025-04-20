@@ -18,6 +18,7 @@ interface GameState {
   players: IPlayer[];
   draws: number;
   lines: ILine[];
+  gameFormIsOpen: boolean;
 }
 
 const initialState: GameState = {
@@ -42,6 +43,7 @@ const initialState: GameState = {
   lines: Array(9)
     .fill(null)
     .map((_, index) => ({ index, color: null })),
+  gameFormIsOpen: false,
 };
 
 const changeTurn = (players: GameState["players"]) => {
@@ -128,6 +130,13 @@ const gameSlice = createSlice({
       state.draws = 0;
       state.players = initialState.players;
     },
+
+    openGameForm: (state: GameState) => {
+      state.gameFormIsOpen = true;
+    },
+    closeGameForm: (state: GameState) => {
+      state.gameFormIsOpen = false;
+    },
   },
 });
 
@@ -138,6 +147,8 @@ export const {
   addToPlayerWins,
   newGame,
   restartGame,
+  closeGameForm,
+  openGameForm,
 } = gameSlice.actions;
 
 export default gameSlice.reducer;

@@ -9,9 +9,14 @@ const StyledDiv = styled.div`
 `;
 
 const Label = styled.label`
-  color: var(--color-white);
-  font-weight: 600;
+  color: var(--color-gray-800);
   width: fit-content;
+
+  font-size: 12px;
+
+  @media (min-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const ErrorParagraph = styled.p`
