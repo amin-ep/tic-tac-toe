@@ -2,30 +2,38 @@ import { ReactNode } from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  background: linear-gradient(
-    90deg,
-    var(--color-orange-600),
-    var(--color-amber-400),
-    var(--color-cyan-300),
-    var(--color-blue-500)
-  );
+  display: inline-block;
+  background-color: var(--color-amber-400);
+  padding: 0.75rem 1.5rem;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 13px;
+  cursor: pointer;
+  box-shadow: inset 0 -3px 0 0 #816724;
+  -webkit-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
+  border: none;
+  outline: none;
+  white-space: nowrap;
 
-  box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.3);
+  font-weight: 300;
 
-  padding: 0.25rem 1rem;
-  border-radius: 999px;
-  background-size: 300%;
-  transition: 0.3s;
-
-  &:hover {
-    transform: scale(1.1);
-    background-position: 100%;
-    color: var(--color-white);
-    box-shadow: 0 2px 12px 2px rgba(0, 0, 0, 0.3);
+  @media (min-width: 640px) {
+    font-size: 14px;
   }
 
-  &:disabled {
-    cursor: not-allowed;
+  @media (min-width: 1280px) {
+    font-size: 16px;
+  }
+
+  &:hover {
+    background-color: var(--color-cyan-300);
+    box-shadow: inset 0 -3px 0 0 #3c8b96;
+  }
+
+  &:active {
+    box-shadow: inset 0 3px 0 0 #3c8b96;
+    transform: translateY(1px);
   }
 `;
 
