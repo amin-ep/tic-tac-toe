@@ -1,8 +1,3 @@
-// import Board from "./components/Board";
-// import Header from "./components/Header";
-// import Toast from "./components/Toast";
-// import NewGameButton from "./components/NewGameButton";
-
 import { useSelector } from "react-redux";
 import Header from "./components/Header";
 import { ReduxStore } from "./store/store";
